@@ -1,3 +1,4 @@
 from main_draw import MainWindow
 
-MainWindow()
+start = MainWindow()
+start.draw()
