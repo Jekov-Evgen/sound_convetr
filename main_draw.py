@@ -1,26 +1,29 @@
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import *
+from PySide6 import QtWidgets
 from sound import Sound
 
 
 class MainWindow:
     def __init__(self):
-        self.file_path = None
-        self.root = Tk()
-        self.root.title("Переводчик звука")
-        frm = ttk.Frame(self.root, padding=10)
-        frm.grid
+        self.app = QtWidgets.QApplication()
+        window = QtWidgets.QWidget()
+        window.setWindowTitle("Переводчик")
+        box = QtWidgets.QVBoxLayout()
         
-        ttk.Label(text="Выберите файл для переобразования(Формат mp3)", 
-                  font="30").grid(row=0, column=0, padx=10, pady=10)
+        info = QtWidgets.QLabel("Выберите файл для перевода")
+        start_button = QtWidgets.QPushButton("Выбрать файл")
         
-        ttk.Button(text="Выбрать файл", 
-                   width=100, command=self.audio_processing).grid(row=1, column=0, padx=10, pady=10)
+        box.addWidget(info)
+        box.addWidget(start_button)
         
-
-    def draw(self):
-        self.root.mainloop()
+        start_button.clicked.connect(self.audio_processing)
+        
+        window.setLayout(box)
+        
+        window.show()
+        self.app.exec()
     
     def audio_processing(self):
         try:
