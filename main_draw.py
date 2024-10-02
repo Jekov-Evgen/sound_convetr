@@ -12,7 +12,7 @@ class MainWindow:
         self.window.setWindowTitle("Переводчик")
         box = QtWidgets.QVBoxLayout()
         
-        info = QtWidgets.QLabel("Выберите файл для перевода")
+        info = QtWidgets.QLabel("Выберите файл для перевода в график")
         start_button = QtWidgets.QPushButton("Выбрать файл")
         
         start_button.clicked.connect(self.audio_processing)
